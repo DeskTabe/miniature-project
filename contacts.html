@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Контакты — КУБ</title>
+  <link rel="stylesheet" href="styles/main.css" />
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <div class="header__content">
+        <div class="logo">
+          <h1>КУБ</h1>
+          <p class="logo__subtitle">Lorem ipsum</p>
+        </div>
+        <nav class="navigation">
+          <ul class="nav-list">
+            <li><a href="index.html" class="nav-link">ГЛАВНАЯ</a></li>
+            <li><a href="projects.html" class="nav-link">ПРОЕКТЫ</a></li>
+            <li><a href="gallery.html" class="nav-link">ГАЛЕРЕЯ</a></li>
+            <li><a href="certificates.html" class="nav-link">СЕРТИФИКАТЫ</a></li>
+            <li><a href="contacts.html" class="nav-link nav-link--active">КОНТАКТЫ</a></li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="page-header">
+      <div class="container">
+        <h2 class="page-title">Контакты</h2>
+        <p class="page-subtitle">Свяжитесь с нами удобным способом</p>
+      </div>
+    </section>
+
+    <section class="contacts">
+      <div class="container contacts__grid">
+        <div class="contacts__info">
+          <h3>Офис</h3>
+          <p>Москва, ул. Пример, 1</p>
+          <h3>Телефон</h3>
+          <p><a href="tel:+79991234567">+7 999 123 45 67</a></p>
+          <h3>Email</h3>
+          <p><a href="mailto:example@gmail.com">example@gmail.com</a></p>
+          <h3>График</h3>
+          <p>Пн–Пт, 10:00–19:00</p>
+        </div>
+        <div class="contacts__form">
+          <form class="form" onsubmit="event.preventDefault(); alert('Спасибо! Мы свяжемся с вами.');">
+            <label>
+              Имя
+              <input type="text" name="name" placeholder="Ваше имя" required />
+            </label>
+            <label>
+              Телефон
+              <input type="tel" name="phone" placeholder="+7 ___ ___ __ __" required />
+            </label>
+            <label>
+              Сообщение
+              <textarea name="message" rows="5" placeholder="Кратко опишите задачу" required></textarea>
+            </label>
+            <button class="btn" type="submit">Отправить</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__content">
+        <div class="footer__contact">
+          <h3>Связаться с нами</h3>
+          <p>example@gmail.com · +7 999 123 45 67 · г. Москва</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

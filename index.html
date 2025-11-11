@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>КУБ - Архитектурное агентство</title>
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header__content">
+                <div class="logo">
+                    <h1>КУБ</h1>
+                    <p class="logo__subtitle">Lorem ipsum</p>
+                </div>
+                <nav class="navigation">
+                    <ul class="nav-list">
+                        <li><a href="index.html" class="nav-link nav-link--active">ГЛАВНАЯ</a></li>
+                        <li><a href="projects.html" class="nav-link">ПРОЕКТЫ</a></li>
+                        <li><a href="gallery.html" class="nav-link">ГАЛЕРЕЯ</a></li>
+                        <li><a href="certificates.html" class="nav-link">СЕРТИФИКАТЫ</a></li>
+                        <li><a href="contacts.html" class="nav-link">КОНТАКТЫ</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Главный баннер -->
+        <section class="hero">
+            <div class="container">
+                <div class="hero__content">
+                    <div class="hero__text">
+                        <h2 class="hero__title" id="heroTitle">ПРОЕКТ</h2>
+                        <p class="hero__subtitle">Lorem ipsum</p>
+                        <div class="hero__nav">
+                            <button id="heroPrev" class="hero__nav-btn hero__nav-btn--prev" aria-label="Предыдущий проект">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M15 6l-6 6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            </button>
+                            <div class="hero__counter">
+                                <span id="heroCurrent" class="hero__current">01</span>
+                                <span class="hero__divider">—</span>
+                                <span id="heroTotal" class="hero__total">02</span>
+                            </div>
+                            <button id="heroNext" class="hero__nav-btn hero__nav-btn--next" aria-label="Следующий проект">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 18l6-6-6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="hero__image">
+                        <img id="heroImage" src="assets/images/hero.jpg" alt="Проект — современная архитектура" />
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- О нас -->
+        <section class="about">
+            <div class="container">
+                <h2 class="about__title">О компании</h2>
+                <div class="about__content">
+                    <div class="about__images">
+<img src="assets/images/about1.jpg" alt="Интерьер — архитектура" />
+<img src="assets/images/about2.jpg" alt="Фасад здания" />
+<img src="assets/images/about3.jpg" alt="Строительство и дизайн" />
+                    </div>
+                    <div class="about__text">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam blandit lorem lacinia elit pretium, ut pellentesque ipsum accumsan. Pellentesque tellus lorem, consectetur sed sapien ultrices, finibus imperdiet urna.</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam blandit lorem lacinia elit pretium, ut pellentesque ipsum accumsan.</p>
+                        <a href="projects.html" class="btn btn--outline">
+                            <span>ПОДРОБНЕЕ</span>
+                            <svg width="16" height="8" viewBox="0 0 16 8" fill="none">
+                                <path d="M0.5 4H15.5M15.5 4L12.5 1M15.5 4L12.5 7" stroke="currentColor"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__content">
+                <div class="footer__contact">
+                    <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam blandit lorem lacinia elit pretium, ut pellentesque ipsum accumsan.</p>
+                    <div class="contact-info">
+                        <p>example@gmail.com</p>
+                        <p>+7 999 123 45 67</p>
+                        <p>Lorem ipsum, г. Москва</p>
+                    </div>
+                </div>
+                <div class="footer__images">
+<img src="assets/images/footer.jpg" alt="Городская архитектура ночью" />
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+      (function(){
+        const slides = [
+          { src: 'assets/images/hero.jpg', title: 'ПРОЕКТ 1' },
+          { src: 'assets/images/hero1.jpg', title: 'ПРОЕКТ 2' }
+        ];
+        const img = document.getElementById('heroImage');
+        const title = document.getElementById('heroTitle');
+        const cur = document.getElementById('heroCurrent');
+        const tot = document.getElementById('heroTotal');
+        const prev = document.getElementById('heroPrev');
+        const next = document.getElementById('heroNext');
+        if (!img || !title || !cur || !tot || !prev || !next) return;
+        let idx = 0;
+        const pad2 = n => String(n).padStart(2,'0');
+        tot.textContent = pad2(slides.length); // всего слайдов
+        function render(){
+          const s = slides[idx];
+          img.src = s.src;
+          title.textContent = s.title;
+          cur.textContent = pad2(idx + 1);
+        }
+        prev.addEventListener('click', ()=>{ idx = (idx - 1 + slides.length) % slides.length; render(); });
+        next.addEventListener('click', ()=>{ idx = (idx + 1) % slides.length; render(); });
+        render();
+      })();
+    </script>
+</body>
+</html>
