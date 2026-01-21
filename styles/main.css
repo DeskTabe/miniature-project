@@ -62,7 +62,7 @@ a { color: inherit; text-decoration: none; }
 
 /* Project */
 .project { padding: 16px 0 24px; }
-.project__media { border: 1px solid var(--border); border-radius: 12px; overflow: hidden; }
+.project__media { border: 1px solid var(--border); border-radius: 12px; overflow: hidden; max-width: 800px; margin: 0 auto;}
 .project__media img { width: 100%; height: auto; display: block; object-fit: cover; }
 .project__details { margin-top: 16px; }
 .project__meta { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 16px; padding: 0; list-style: none; }
@@ -102,3 +102,4 @@ a { color: inherit; text-decoration: none; }
   .cards { grid-template-columns: 1fr; }
   .masonry { columns: 1 280px; }
 }
+
