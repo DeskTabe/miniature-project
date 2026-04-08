@@ -12,7 +12,7 @@
       <div class="header__content">
         <div class="logo">
           <h1>КУБ</h1>
-          <p class="logo__subtitle">Lorem ipsum</p>
+          <p class="logo__subtitle">Архитектурное агентство</p>
         </div>
         <nav class="navigation">
           <ul class="nav-list">
@@ -62,7 +62,59 @@
         </div>
       </div>
     </section>
+
+    <!-- Кнопка "Заказать расчёт" -->
+    <section class="cta-section">
+      <div class="container cta-section__inner">
+        <div class="cta-section__text">
+          <h2>Заказать расчёт</h2>
+          <p>Оставьте заявку — мы подготовим предварительный расчёт стоимости вашего проекта</p>
+        </div>
+        <button class="btn btn--cta" id="openCalcModal">Заказать расчёт</button>
+      </div>
+    </section>
   </main>
+
+  <!-- Модальное окно -->
+  <div class="modal-overlay" id="calcModal">
+    <div class="modal">
+      <button class="modal__close" id="closeCalcModal" aria-label="Закрыть">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+
+      <div class="modal__grid">
+        <div class="modal__info">
+          <h3>Офис</h3>
+          <p>Москва, ул. Пример, 1</p>
+          <h3>Телефон</h3>
+          <p><a href="tel:+79991234567">+7 999 123 45 67</a></p>
+          <h3>Email</h3>
+          <p><a href="mailto:example@gmail.com">example@gmail.com</a></p>
+          <h3>График</h3>
+          <p>Пн–Пт, 10:00–19:00</p>
+        </div>
+        <div class="modal__form">
+          <form class="form" onsubmit="event.preventDefault(); closeModal(); alert('Спасибо! Мы свяжемся с вами.');">
+            <label>
+              Имя
+              <input type="text" name="name" placeholder="Ваше имя" required />
+            </label>
+            <label>
+              Телефон
+              <input type="tel" name="phone" placeholder="+7 ___ ___ __ __" required />
+            </label>
+            <label>
+              Сообщение
+              <textarea name="message" rows="5" placeholder="Кратко опишите задачу" required></textarea>
+            </label>
+            <button class="btn" type="submit">Отправить</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <footer class="footer">
     <div class="container">
@@ -74,5 +126,38 @@
       </div>
     </div>
   </footer>
+
+  <script>
+    (function () {
+      const modal = document.getElementById('calcModal');
+      const openBtn = document.getElementById('openCalcModal');
+      const closeBtn = document.getElementById('closeCalcModal');
+
+      function openModal() {
+        modal.classList.add('modal-overlay--active');
+        document.body.style.overflow = 'hidden';
+      }
+
+      window.closeModal = function () {
+        modal.classList.remove('modal-overlay--active');
+        document.body.style.overflow = '';
+      };
+
+      if (openBtn) openBtn.addEventListener('click', openModal);
+      if (closeBtn) closeBtn.addEventListener('click', closeModal);
+
+      // Закрытие по клику на оверлей
+      if (modal) {
+        modal.addEventListener('click', function (e) {
+          if (e.target === modal) closeModal();
+        });
+      }
+
+      // Закрытие по Escape
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') closeModal();
+      });
+    })();
+  </script>
 </body>
 </html>
