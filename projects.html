@@ -1,163 +1,110 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Проекты — КУБ</title>
-  <link rel="stylesheet" href="styles/main.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Проекты — КУБ</title>
+    <link rel="stylesheet" href="styles/main.css">
 </head>
 <body>
-  <header class="header">
-    <div class="container">
-      <div class="header__content">
-        <div class="logo">
-          <h1>КУБ</h1>
-          <p class="logo__subtitle">Архитектурное агентство</p>
+    <header class="header">
+        <div class="container header__content">
+            <a href="index.html" class="logo" style="text-decoration:none;">
+                <h1>КУБ</h1>
+                <p class="logo__subtitle">Архитектурное агентство</p>
+            </a>
+            <nav>
+                <ul class="nav-list">
+                    <li><a href="index.html" class="nav-link">ГЛАВНАЯ</a></li>
+                    <li><a href="projects.html" class="nav-link nav-link--active">ПРОЕКТЫ</a></li>
+                    <li><a href="gallery.html" class="nav-link">ГАЛЕРЕЯ</a></li>
+                    <li><a href="certificates.html" class="nav-link">СЕРТИФИКАТЫ</a></li>
+                    <li><a href="contacts.html" class="nav-link">КОНТАКТЫ</a></li>
+                </ul>
+            </nav>
         </div>
-        <nav class="navigation">
-          <ul class="nav-list">
-            <li><a href="index.html" class="nav-link">ГЛАВНАЯ</a></li>
-            <li><a href="projects.html" class="nav-link nav-link--active">ПРОЕКТЫ</a></li>
-            <li><a href="gallery.html" class="nav-link">ГАЛЕРЕЯ</a></li>
-            <li><a href="certificates.html" class="nav-link">СЕРТИФИКАТЫ</a></li>
-            <li><a href="contacts.html" class="nav-link">КОНТАКТЫ</a></li>
-          </ul>
-        </nav>
-      </div>
-    </div>
-  </header>
+    </header>
 
-  <main>
-    <section class="page-header">
-      <div class="container">
-        <h2 class="page-title">Проекты</h2>
-        <p class="page-subtitle">Подборка реализованных и концептуальных работ</p>
-      </div>
-    </section>
+    <main>
+        <div class="container page-header">
+            <h2 class="page-title">Проекты</h2>
+            <p class="page-subtitle">Подборка реализованных и концептуальных работ</p>
+        </div>
 
-    <section class="grid">
-      <div class="container">
-        <div class="cards">
-          <a class="card" href="project-1.html">
-            <img src="assets/images/project1.jpg" alt="Жилой проект" />
-            <div class="card__body">
-              <h3>Проект 1</h3>
-              <p>Жилой дом, 2024</p>
+        <!-- Сетка проектов -->
+        <section class="container grid">
+            <div class="cards">
+                <a href="project-1.html" class="card">
+                    <img src="assets/images/project1.jpg" alt="Проект 1">
+                    <div class="card__body">
+                        <h3>«Резиденция «Парковый»</h3>
+                        <p>Жилой дом, 2024</p>
+                    </div>
+                </a>
+                <a href="project-2.html" class="card">
+                    <img src="assets/images/project2.jpg" alt="Проект 2">
+                    <div class="card__body">
+                        <h3>«Бизнес-центр «Вертикаль»</h3>
+                        <p>Офисное здание, 2023</p>
+                    </div>
+                </a>
+                <a href="project-3.html" class="card">
+                    <img src="assets/images/project3.jpg" alt="Проект 3">
+                    <div class="card__body">
+                        <h3>«Дом «Лесной квартал»</h3>
+                        <p>Дом в разработке, 2022</p>
+                    </div>
+                </a>
             </div>
-          </a>
-          <a class="card" href="project-2.html">
-            <img src="assets/images/project2.jpg" alt="Офисное здание" />
-            <div class="card__body">
-              <h3>Проект 2</h3>
-              <p>Офисное здание, 2023</p>
+        </section>
+
+        <!-- Секция отзывов (акцентное оформление) -->
+        <section class="container" style="padding: 60px 0;">
+            <h2 class="page-title" style="margin-bottom: 32px; text-align: center;">Отзывы клиентов</h2>
+            <div class="cards" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+                <div class="card" style="background: var(--bg); border: 1px solid var(--border);">
+                    <div class="card__body" style="padding: 20px;">
+                        <p style="font-size: 15px; line-height: 1.6; color: var(--text); margin: 0 0 16px; font-style: italic;">«Команда КУБ превзошла все ожидания. Жилой дом получился светлым, функциональным и точно соответствующим нашим пожеланиям. Рекомендую!»</p>
+                        <p style="margin: 0; color: var(--brand); font-weight: 700; font-size: 14px;">— Алексей Петров, «Резиденция «Парковый»</p>
+                    </div>
+                </div>
+                <div class="card" style="background: var(--bg); border: 1px solid var(--border);">
+                    <div class="card__body" style="padding: 20px;">
+                        <p style="font-size: 15px; line-height: 1.6; color: var(--text); margin: 0 0 16px; font-style: italic;">«Отличное внимание к деталям и энергоэффективности. Офисное пространство стало вдохновляющим для нашей команды. Спасибо за профессионализм.»</p>
+                        <p style="margin: 0; color: var(--brand); font-weight: 700; font-size: 14px;">— Мария Иванова, «Бизнес-центр «Вертикаль»</p>
+                    </div>
+                </div>
+                <div class="card" style="background: var(--bg); border: 1px solid var(--border);">
+                    <div class="card__body" style="padding: 20px;">
+                        <p style="font-size: 15px; line-height: 1.6; color: var(--text); margin: 0 0 16px; font-style: italic;">«Процесс проектирования был прозрачным и комфортным. Даже на стадии разработки мы видим чёткое понимание наших требований к натуральным материалам.»</p>
+                        <p style="margin: 0; color: var(--brand); font-weight: 700; font-size: 14px;">— Дмитрий Соколов, «Дом «Лесной квартал»</p>
+                    </div>
+                </div>
             </div>
-          </a>
-          <a class="card" href="project-3.html">
-            <img src="assets/images/project3.jpg" alt="Проект дома в разработке" />
-            <div class="card__body">
-              <h3>Проект 3</h3>
-              <p>Дом в разработке, 2022</p>
+        </section>
+
+        <!-- CTA с перенаправлением на контакты -->
+        <section class="container cta-section">
+            <div class="cta-section__inner">
+                <div class="cta-section__text">
+                    <h2>Готовы обсудить ваш проект?</h2>
+                    <p>Оставьте заявку или свяжитесь с нами напрямую на странице контактов</p>
+                </div>
+                <a href="contacts.html" class="btn btn--cta">Перейти к контактам</a>
             </div>
-          </a>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer__content">
+            <div class="footer__contact">
+                <h3>Связаться с нами</h3>
+                <p>example@gmail.com · +7 999 123 45 67 · г. Москва</p>
+            </div>
+            <div style="text-align: right;">
+                <p style="color: var(--muted); margin: 0;">© 2024–2026 КУБ Архитектурное агентство</p>
+            </div>
         </div>
-      </div>
-    </section>
-
-    <!-- Кнопка "Заказать расчёт" -->
-    <section class="cta-section">
-      <div class="container cta-section__inner">
-        <div class="cta-section__text">
-          <h2>Заказать расчёт</h2>
-          <p>Оставьте заявку — мы подготовим предварительный расчёт стоимости вашего проекта</p>
-        </div>
-        <button class="btn btn--cta" id="openCalcModal">Заказать расчёт</button>
-      </div>
-    </section>
-  </main>
-
-  <!-- Модальное окно -->
-  <div class="modal-overlay" id="calcModal">
-    <div class="modal">
-      <button class="modal__close" id="closeCalcModal" aria-label="Закрыть">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-          <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </button>
-
-      <div class="modal__grid">
-        <div class="modal__info">
-          <h3>Офис</h3>
-          <p>Москва, ул. Пример, 1</p>
-          <h3>Телефон</h3>
-          <p><a href="tel:+79991234567">+7 999 123 45 67</a></p>
-          <h3>Email</h3>
-          <p><a href="mailto:example@gmail.com">example@gmail.com</a></p>
-          <h3>График</h3>
-          <p>Пн–Пт, 10:00–19:00</p>
-        </div>
-        <div class="modal__form">
-          <form class="form" onsubmit="event.preventDefault(); closeModal(); alert('Спасибо! Мы свяжемся с вами.');">
-            <label>
-              Имя
-              <input type="text" name="name" placeholder="Ваше имя" required />
-            </label>
-            <label>
-              Телефон
-              <input type="tel" name="phone" placeholder="+7 ___ ___ __ __" required />
-            </label>
-            <label>
-              Сообщение
-              <textarea name="message" rows="5" placeholder="Кратко опишите задачу" required></textarea>
-            </label>
-            <button class="btn" type="submit">Отправить</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <footer class="footer">
-    <div class="container">
-      <div class="footer__content">
-        <div class="footer__contact">
-          <h3>Связаться с нами</h3>
-          <p>example@gmail.com · +7 999 123 45 67 · г. Москва</p>
-        </div>
-      </div>
-    </div>
-  </footer>
-
-  <script>
-    (function () {
-      const modal = document.getElementById('calcModal');
-      const openBtn = document.getElementById('openCalcModal');
-      const closeBtn = document.getElementById('closeCalcModal');
-
-      function openModal() {
-        modal.classList.add('modal-overlay--active');
-        document.body.style.overflow = 'hidden';
-      }
-
-      window.closeModal = function () {
-        modal.classList.remove('modal-overlay--active');
-        document.body.style.overflow = '';
-      };
-
-      if (openBtn) openBtn.addEventListener('click', openModal);
-      if (closeBtn) closeBtn.addEventListener('click', closeModal);
-
-      // Закрытие по клику на оверлей
-      if (modal) {
-        modal.addEventListener('click', function (e) {
-          if (e.target === modal) closeModal();
-        });
-      }
-
-      // Закрытие по Escape
-      document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape') closeModal();
-      });
-    })();
-  </script>
+    </footer>
 </body>
 </html>
