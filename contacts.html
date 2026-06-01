@@ -84,36 +84,31 @@
     </div>
   </footer>
   <script>
-     document.querySelector('form').addEventListener('submit', function(event) {
-            event.preventDefault();
+    const form = document.querySelector('form')
 
-            const name = document.querySelector("[name=name]");
-            const phone = document.querySelector("[name=phone]");
-            const message = document.querySelector("[name=message]");
-            const rule = document.querySelector("[name=rule]");
+    form.addEventListener('submit', (e) => {
+      e.preventDefault(); // Prevent HTML submission
+      
+      // Create payload of type multipart/form-data (awlays of this type when using the FormData() constructor):
+      const fd = new FormData(form);
 
-            var formData = {
-              name: name.value,
-              phone: phone.value,
-              message: message.value,
-              rule: rule.checked
-            };
+      // Convert to URL-encoded string:
+      const urlEncoded = new URLSearchParams(fd).toString();
+      
+      fetch('https://express-vercel-rho-three.vercel.app/', {
+        method: "POST",
+        body: urlEncoded, // just 'fd' for multipart/form-data
+        headers: {
+          'Content-type': 'application/x-www-form-urlencoded'
+          // Content-type header should only be set if data is url-encoded! A FormData object will set the header as multipart/form-data automatically (and setting it manually may lead to an error)
+        }
+      })
+      .then(data => {
+        alert("Спасибо за заявку! Мы скоро свяжемся с вами.")
+        form.reset()
+      })
 
-          
-            fetch('https://script.google.com/macros/s/AKfycbxLy3VmhkDAzh7RjPLs9njK5Gkb3nRvl7tkiiI2evXfFb5UjVULWO6EQ8GI3YQS6dJG/exec', {
-                method: 'POST',
-                body: JSON.stringify(formData)
-            })
-            .then(response => response.text())
-            .then(data => {
-                alert("Спасибо за заявку! Мы скоро свяжемся с вами.");
-                document.querySelector('form').reset();
-            })
-            .catch(error => {
-                console.error('Ошибка:', error);
-            });
-        });
-
+    })
   </script>
 </body>
 </html>
