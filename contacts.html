@@ -84,31 +84,80 @@
     </div>
   </footer>
   <script>
-    const form = document.querySelector('form')
+document.addEventListener('DOMContentLoaded', function() {
+    // Находим форму и элементы (используем универсальные селекторы, так как в HTML нет явных id/class)
+    const form = document.querySelector('form');
+    const phoneInput = form ? form.querySelector('input[type="tel"], input[name*="phone" i], input[placeholder*="Телефон" i]') : null;
+    const submitBtn = form ? form.querySelector('button[type="submit"], input[type="submit"]') : null;
 
-    form.addEventListener('submit', (e) => {
-      e.preventDefault(); // Prevent HTML submission
-      
-      // Create payload of type multipart/form-data (awlays of this type when using the FormData() constructor):
-      const fd = new FormData(form);
+    if (!form || !submitBtn) return;
 
-      // Convert to URL-encoded string:
-      const urlEncoded = new URLSearchParams(fd).toString();
-      
-      fetch('https://express-vercel-rho-three.vercel.app/', {
-        method: "POST",
-        body: urlEncoded, // just 'fd' for multipart/form-data
-        headers: {
+    let isSubmitting = false; // Флаг для защиты от повторной отправки
+
+    form.addEventListener('submit', function(event) {
+        // 1. ВАЛИДАЦИЯ НОМЕРА ТЕЛЕФОНА (Российский регион)
+        if (phoneInput) {
+            const phoneValue = phoneInput.value.trim();
+            // Регулярное выражение: +7, 7 или 8, затем 10 цифр (допускаются пробелы, скобки, дефисы)
+            const ruPhoneRegex = /^(\+7|7|8)[\s\-]?\(?\d{3}\)?[\s\-]?\d{3}[\s\-]?\d{2}[\s\-]?\d{2}$/;
+            
+            if (!ruPhoneRegex.test(phoneValue)) {
+                event.preventDefault();
+                alert('Пожалуйста, введите корректный номер телефона в российском формате (например, +7 999 123 45 67).');
+                phoneInput.focus();
+                return; // Прерываем выполнение, форма не отправится
+            }
+        }
+
+        // 2. ЗАЩИТА ОТ ПОВТОРНОЙ ОТПРАВКИ 
+        if (isSubmitting) {
+            event.preventDefault();
+            return; // Игнорируем все последующие клики
+        }
+
+        // Активируем защиту: блокируем флаг и кнопку
+        isSubmitting = true;
+        submitBtn.disabled = true;
+        const originalBtnText = submitBtn.textContent || submitBtn.value;
+        submitBtn.textContent = 'Отправка...'; // Визуальная обратная связь
+
+        // Предотвращаем стандартную перезагрузку страницы для управления запросом через JS
+        event.preventDefault();
+        const formData = new FormData(form);
+
+        const urlEncoded = new URLSearchParams(formData).toString();
+
+        // Выполняем POST-запрос
+        fetch('https://express-vercel-rho-three.vercel.app/', {
+            method: 'POST',
+            body: urlEncoded,
+            headers: {
           'Content-type': 'application/x-www-form-urlencoded'
           // Content-type header should only be set if data is url-encoded! A FormData object will set the header as multipart/form-data automatically (and setting it manually may lead to an error)
         }
-      })
-      .then(data => {
-        alert("Спасибо за заявку! Мы скоро свяжемся с вами.")
-        form.reset()
-      })
-
-    })
+        })
+        .then(response => {
+            if (response.ok) {
+                alert('Сообщение успешно отправлено!');
+                form.reset(); // Очищаем форму после успешной отправки
+                isSubmitting = false;
+                submitBtn.disabled = false;
+                submitBtn.textContent = originalBtnText;
+            } else {
+                throw new Error('Ошибка сервера');
+            }
+        })
+        .catch(error => {
+            console.error('Ошибка отправки:', error);
+            alert('Произошла ошибка при отправке. Попробуйте позже.');
+            
+            // Разблокируем кнопку в случае ошибки, чтобы пользователь мог повторить попытку
+            isSubmitting = false;
+            submitBtn.disabled = false;
+            submitBtn.textContent = originalBtnText;
+        });
+    });
+});
   </script>
 </body>
 </html>
